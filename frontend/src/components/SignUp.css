@@ -1,0 +1,263 @@
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@400;600;700&display=swap');
+
+.page-layout {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    font-family: "Geist", sans-serif;
+    background: #0e0e0e;
+    overflow: hidden;
+}
+
+.left-panel {
+    flex: 0.5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.left-panel-heading {
+    color: #fff;
+    font-weight: 600;
+    font-size: 40px;
+    margin-bottom: .5em;
+    margin-top: 0px;
+}
+
+.username-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+    background: rgba(14, 14, 14, .4);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 35px 50px;
+    border-radius: 16px;
+    backdrop-filter: blur(25px);
+}
+
+.username-box-text {
+    color: #dbdbdb;
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 2px;
+    text-align: center;
+}
+
+.username-subtext {
+    color: #ffa268;
+    font-size: 0.95rem;
+    font-weight: 500;
+    margin-bottom: 4px;
+    text-align: center;
+}
+
+.username-box-text {
+    color: #dbdbdb;
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.input-heading {
+    align-self: flex-start;
+    color: #bbb;
+    font-size: 0.85rem;
+    margin-bottom: 4px;
+}
+
+a {
+    align-self: flex-start;
+    color: #bbb;
+    font-size: 0.85rem;
+    margin-bottom: 4px;
+}
+
+.userName {
+    width: 25em;
+    padding: 8px 14px;
+    font-size: 0.9rem;
+    border-radius: 6px;
+    border: 0px solid rgba(84, 84, 84, 0.7);
+    background: #101010;
+    color: #fff;
+    outline: none;
+    transition: all 0.2s ease-in-out;
+}
+
+.input-wrapper:hover {
+    border: 1px solid #ffa268;
+    box-shadow: 0 0 6px rgba(255, 130, 21, 0.6);
+}
+
+.info-text {
+    align-self: flex-start;
+    font-size: 0.75rem;
+    color: #777;
+    margin: -2px 0 20px 2px;
+}
+
+.input-wrapper {
+    background: rgba(14, 14, 14, .4);
+    border: 1px solid rgba(84, 84, 84, 0.7);
+    border-radius: 5px;
+    margin-bottom: 0.4em;
+    padding-left: .5em;
+    padding-top: .1em;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 10px 14px;
+    margin-top: 12px;
+    border: none;
+    border-radius: 10px;
+    background-color: #482200;
+    border: .5px solid rgba(255, 136, 24, 0.408);
+    color: #FF9933;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.submit-btn:hover {
+    background-color: #8a3d00;
+    color: white;
+}
+
+span {
+    margin-top: -4px;
+    margin-bottom: 6px;
+    color: #ff5555;
+    font-size: 0.8rem;
+    text-align: left;
+    align-self: flex-start;
+}
+
+.right-panel {
+    flex: 0.5;
+    /* margin: 0.25em; */
+    border-radius: 0px;
+    background: black;
+    backdrop-filter: blur(1000px);
+    padding: 30px;
+    overflow-y: auto;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    gap: 20px;
+}
+
+.dashboard-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 6px;
+}
+
+.dashboard-subtitle {
+    font-size: 1rem;
+    color: #bbb;
+    margin-bottom: 20px;
+}
+
+.capmaign-heading {
+    color: #FF9933;
+    font-family: "Geist", sans-serif;
+    font-size: 15px;
+    text-align: center;
+    width: 12em;
+    padding: .25em 0em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #482200;
+    border-radius:15px;
+    margin-bottom: .5em;
+    margin-top: 1em;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.stat-card {
+    background: rgba(0, 0, 0, 1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+    transition: transform 0.2s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-3px);
+}
+
+.stat-label {
+    font-size: 0.85rem;
+    color: #aaa;
+}
+
+.stat-value {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #fff;
+    margin: 4px 0;
+}
+
+.stat-change {
+    font-size: 0.75rem;
+    color: #4caf50;
+}
+
+.upcoming-campaigns {
+    margin-top: 20px;
+}
+
+.upcoming-campaigns h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.campaign-card {
+    background: rgba(0, 0, 0, 1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+    padding: 12px;
+    margin-bottom: 10px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+}
+
+.campaign-title {
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.campaign-to,
+.campaign-time {
+    font-size: 0.85rem;
+    color: #aaa;
+}
+.switch-auth {
+    margin-top: 1rem;
+    font-size: 14px;
+    color: #555;
+    text-align: center;
+}
+
+.switch-link {
+    color: #ff9933;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.switch-link:hover {
+    text-decoration: underline;
+}

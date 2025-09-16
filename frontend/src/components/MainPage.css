@@ -1,0 +1,265 @@
+.registerPage-body {
+  display: flex;
+  justify-content: center;
+  height: auto;
+  align-items: flex-start;
+  color: #fafafa;
+  font-family: "Geist", sans-serif;
+  /* text-shadow: -4px 4px 8px rgba(0, 0, 0, 0.8); */
+  overflow-y: auto;
+}
+
+.page-name {
+  color: #fafafa;
+  font-family: "Geist", sans-serif;
+  text-shadow: -4px 4px 8px rgba(0, 0, 0, 0.8);
+  font-size: 40px;
+  text-align: center;
+  margin-top: 0.5em;
+  width: 100%;
+  position: absolute;
+
+  /* Typewriter effect */
+  overflow: hidden;
+  /* Hide overflowing text */
+  white-space: nowrap;
+
+  /* Cursor effect */
+  opacity: 0;
+  animation: typing 3s steps(200, end), fadeIn 3s forwards;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+
+.recrail-motto {
+  color: #FF9933;
+  font-family: "Geist", sans-serif;
+  font-size: 15px;
+  text-align: center;
+  margin-top: 11.75em;
+  width: 12.5em;
+  height: 2em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: absolute;
+  background-color: #482200;
+  border-radius: 15px;
+}
+
+.page-body {
+  margin-top: 5em;
+  width: 20%;
+  height: auto;
+  color: rgb(229, 229, 229);
+  background-color: rgba(0, 0, 0, 0.8);
+  border: 0.5px solid rgba(229, 229, 229, 0.2);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 1em 2em;
+  gap: 1em;
+  position: relative;
+}
+
+.signup {
+  position: absolute;
+  top: 1.25em;
+  right: 2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(50, 50, 50, 0.9);
+  backdrop-filter: blur(10px);
+  color: #fff1ea;
+  padding: .5em 1.5em;
+  font-size: 14px;
+  font-family: inherit;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.signup:hover {
+  background-color: #f5f5f5;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  color: #000000;
+}
+.login {
+  position: absolute;
+  top: 1.25em;
+  right: 9.5em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(50, 50, 50, 0.9);
+  backdrop-filter: blur(10px);
+  color: #fff1ea;
+  padding: .5em 1.5em;
+  font-size: 14px;
+  font-family: inherit;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.login:hover {
+  background-color: #f5f5f5;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  color: #000000;
+}
+
+
+.dashboard-preview {
+  margin-top: 17em;
+  width: 900px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  background-image: url('../assets/recrailer.png');
+  background-size: cover;
+  background-position: center;
+  border-radius: 12px;
+  min-height: 650px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+  border: 0.25px solid rgba(255, 255, 255, 0.3);
+  overflow: hidden;
+
+  /* Animation */
+  animation: fadeUp .75s ease-out forwards;
+}
+
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(30px); /* start slightly down */
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0); /* end at original position */
+  }
+}
+
+
+
+.dashboard-caption {
+  color: #fafafa;
+  font-size: 18px;
+  text-align: center;
+  text-shadow: -2px 2px 6px rgba(0, 0, 0, 0.7);
+  margin-bottom: 1em;
+}
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 62.5em;
+  width: 80%;
+  /* wide layout */
+  max-width: 800px;
+  position: relative;
+  font-family: "Geist", sans-serif;
+  animation: fadeIn 2s forwards;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 20%;
+  /* center the line */
+  transform: translateX(-50%);
+  border-radius: 50px;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background-color: #482200;
+}
+
+.timeline-item {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin: 25px 0;
+  position: relative;
+  width: 100%;
+}
+
+.circle {
+  width: 28px;
+  height: 28px;
+  background: #FF9933;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 20%;
+  /* circle in the middle */
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+.content {
+  max-width: 60%;
+  padding-left: 30%;
+  /* text to the right of the line */
+}
+
+.content h3 {
+  margin: 0;
+  font-size: 1rem;
+  color: #FF9933;
+  font-weight: 600;
+  background-color: #482200;
+  border-radius: 15px;
+  width: fit-content;
+  padding: .25em .5em;
+}
+
+.content p {
+  margin: 8px 0 0 .5em;
+  color: #e3e3e3;
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+.footer {
+  text-align: center;
+  color: #e3e3e3;
+  font-family: "Geist", sans-serif;
+  padding: 1rem 0;
+  font-size: 0.9rem;
+  position: absolute;
+  top: 102em;
+}

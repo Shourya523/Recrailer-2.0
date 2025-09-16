@@ -1,0 +1,54 @@
+import { emailID } from "../models/user.models.js";
+import bcrypt from 'bcrypt';
+import express from 'express'
+
+
+
+export const signup=async (req, res) => {
+  try {
+    const { email, loginPassword, appPassword } = req.body;
+
+    const emailExists = await emailID.findOne({ email });
+    if (emailExists) {
+      return res.status(400).json({ error: 'Email already exists' });
+    }
+
+    const hashedLoginPassword = await bcrypt.hash(loginPassword, 10);
+
+    const newUser = new emailID({
+      email,
+      loginPassword: hashedLoginPassword,
+      appPassword,
+    });
+
+    await newUser.save();
+
+    res.status(201).json({ message: 'Email saved successfully', data: newUser });
+  }
+  catch (error) {
+    console.log(error);
+    res.status(500).json({ error: 'Server error' });
+  }
+}
+
+export const logIn=async (req, res) => {
+  try {
+    const { email, loginPassword } = req.body;
+    const userExists = await emailID.findOne({ email });
+    if (!userExists) { return res.status(401).send('Email/Password incorrect') }
+    const isMatch = await userExists.isLoginPasswordCorrect(loginPassword);
+    if (!isMatch) { return res.status(401).send("Password is incorrect") }
+    const accessToken = userExists.generateAccessToken();
+    const refreshToken = userExists.generateRefreshToken();
+    userExists.refreshToken = refreshToken;
+    await userExists.save();
+    res.json({
+      message: "Login successful",
+      accessToken,
+      refreshToken,
+      email,
+    })
+  } catch (error) {
+    console.log("Error: ", error);
+  }
+}
