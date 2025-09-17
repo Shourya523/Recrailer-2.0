@@ -1,9 +1,9 @@
 import nodemailer from 'nodemailer';
-import { emailID } from '../models/user.models.js';
+import { User } from '../models/user.models.js';
 
 export async function sendMailFromUser(fromEmail, to, subject, text, html) {
   try {
-    const user = await emailID.findOne({ email: fromEmail });
+    const user = await User.findOne({ email: fromEmail });
     if (!user) throw new Error('Sender email not found in database');
 
     const transporter = nodemailer.createTransport({

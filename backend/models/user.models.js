@@ -4,16 +4,16 @@ import jwt from 'jsonwebtoken'
 import dotenv from 'dotenv'
 dotenv.config();
 
-const emailSchema = new mongoose.Schema({
+const UserSchema = new mongoose.Schema({
   email: { type: String, required: true, unique: true },
   loginPassword: { type: String, required: true },
   appPassword: { type: String, required: true },
   refreshToken:{type:String}
 });
-emailSchema.methods.isLoginPasswordCorrect = async function (loginPassword) {
+UserSchema.methods.isLoginPasswordCorrect = async function (loginPassword) {
   return await bcrypt.compare(loginPassword, this.loginPassword);
 }
-emailSchema.methods.generateAccessToken= function(){
+UserSchema.methods.generateAccessToken= function(){
   return jwt.sign(
     {
       _id : this._id,
@@ -25,7 +25,7 @@ emailSchema.methods.generateAccessToken= function(){
     }
   )
 }
-emailSchema.methods.generateRefreshToken= function(){
+UserSchema.methods.generateRefreshToken= function(){
   return jwt.sign(
     {
       _id : this._id,
@@ -37,4 +37,4 @@ emailSchema.methods.generateRefreshToken= function(){
     }
   )
 }
-export const emailID = mongoose.model('emailID', emailSchema);
+export const User = mongoose.model('User', UserSchema);

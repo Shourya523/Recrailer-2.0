@@ -1,4 +1,4 @@
-import { emailID } from "../models/user.models.js";
+import { User } from "../models/user.models.js";
 import bcrypt from 'bcrypt';
 import express from 'express'
 
@@ -8,14 +8,14 @@ export const signup=async (req, res) => {
   try {
     const { email, loginPassword, appPassword } = req.body;
 
-    const emailExists = await emailID.findOne({ email });
+    const emailExists = await User.findOne({ email });
     if (emailExists) {
       return res.status(400).json({ error: 'Email already exists' });
     }
 
     const hashedLoginPassword = await bcrypt.hash(loginPassword, 10);
 
-    const newUser = new emailID({
+    const newUser = new User({
       email,
       loginPassword: hashedLoginPassword,
       appPassword,
@@ -34,7 +34,7 @@ export const signup=async (req, res) => {
 export const logIn=async (req, res) => {
   try {
     const { email, loginPassword } = req.body;
-    const userExists = await emailID.findOne({ email });
+    const userExists = await User.findOne({ email });
     if (!userExists) { return res.status(401).send('Email/Password incorrect') }
     const isMatch = await userExists.isLoginPasswordCorrect(loginPassword);
     if (!isMatch) { return res.status(401).send("Password is incorrect") }

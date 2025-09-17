@@ -134,11 +134,12 @@ export default function ComposePage() {
             <div className="cn-input-wrapper">
               <FontAwesomeIcon icon={faCalendarAlt} className="cn-input-icon" />
               <input
-                {...register("schedule")}
+                {...register("scheduledTime")}   // ✅ matches backend
                 type="datetime-local"
               />
             </div>
           </div>
+
 
           {/* Submit */}
           <button type="submit" className="cn-submit-btn">
