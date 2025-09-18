@@ -15,7 +15,7 @@ function SignUp() {
 
     const onSubmit = async (data) => {
         try {
-            const response = await fetch("http://localhost:8000/api/sign-up", {
+            const response = await fetch("https://recrailer-2-0.onrender.com/api/sign-up", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(data),

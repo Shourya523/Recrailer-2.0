@@ -18,7 +18,7 @@ export default function ScheduleView() {
     const fetchMails = async () => {
       try {
         const token = localStorage.getItem("token");
-        const res = await fetch("http://localhost:8000/api/scheduled", {
+        const res = await fetch("https://recrailer-2-0.onrender.com/api/scheduled", {
           method: "GET",
           headers: {
             Authorization: localStorage.getItem("token"),

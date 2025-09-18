@@ -26,7 +26,7 @@ export default function ComposePage() {
 
   const onSubmit = async (formData) => {
     if (!enableSchedule) delete formData.scheduledTime;
-    const response = await fetch("http://localhost:8000/api/send-email", {
+    const response = await fetch("https://recrailer-2-0.onrender.com/api/send-email", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

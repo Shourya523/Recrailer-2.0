@@ -15,7 +15,7 @@ function LogIn() {
 
     const onSubmit = async (data) => {
         try {
-            const response = await fetch("http://localhost:8000/api/log-in", {
+            const response = await fetch("https://recrailer-2-0.onrender.com/api/log-in", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(data),
