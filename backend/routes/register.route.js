@@ -57,17 +57,16 @@ registerRouter.get("/run-cron", async (req, res) => {
   try {
     const now = new Date();
     const mails = await email
-      .find({
-        scheduledTime: { $lte: now },
-        status: "scheduled",
-      })
+      .find({ scheduledTime: { $lte: now }, status: "scheduled" })
       .populate("userId");
+
+    console.log("Cron hit at:", now, "Mails found:", mails.length);
 
     let processed = 0;
 
     for (const mail of mails) {
       try {
-        const user = await User.findById(mail.userId);
+        const user = mail.userId; // already populated
         if (!user) {
           mail.status = "failed";
           await mail.save();
@@ -85,14 +84,17 @@ registerRouter.get("/run-cron", async (req, res) => {
         mail.status = "sent";
         await mail.save();
         processed++;
+        console.log(`Mail sent: ${user.email} → ${mail.to}`);
       } catch (err) {
         mail.status = "failed";
         await mail.save();
+        console.error("Error sending mail:", err);
       }
     }
 
     res.json({ message: "Cron executed", mailsProcessed: processed });
   } catch (err) {
+    console.error("Cron error:", err);
     res.status(500).json({ error: err.message });
   }
 });
