@@ -1,0 +1,162 @@
+/* Dashboard layout */
+.sv-dashboard {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  font-family: "Geist", sans-serif;
+  background-color: black;
+  backdrop-filter: opacity(0);
+  color: #fff;
+}
+
+/* Sidebar */
+.sv-sidebar {
+  width: 250px;
+  background: black;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.sv-new-campaign {
+  background: linear-gradient(135deg, #ff8000, #ff7b00);
+  color: black;
+  border: none;
+  padding: 1em 1em 1em 2em;
+  border-radius: 8px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  cursor: pointer;
+  display: flex;
+  gap: 1.5em;
+  align-items: center;
+  margin-top: .75em;
+}
+
+.sv-badge {
+  display: none;
+}
+
+.sv-sidebar-title {
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+.sv-sidebar-menu {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1.35em;
+  gap: 1.5em;
+}
+
+.sv-menu-item {
+  display: flex;
+  align-items: center;
+  padding: .5em 0em .5em 1em;
+  width: 95%;
+  height: 2em;
+  gap: 10px;
+  color: #bbb;
+  font-size: 0.95rem;
+  cursor: pointer;
+  border-radius: 10px
+}
+
+.sv-menu-item:hover,
+.sv-active {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+/* Main content */
+.sv-main {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+/* Topbar */
+.sv-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.sv-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-left: .25em;
+  margin-top: .25em;
+}
+
+.sv-icons {
+  display: flex;
+  gap: 1.5em;
+  color: #aaa;
+}
+
+.sv-icons svg {
+  cursor: pointer;
+}
+
+.sv-icons svg:hover {
+  color: #ff9933;
+}
+
+/* Emails list */
+.sv-list-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 3em;
+}
+
+.sv-mail-card {
+  background: rgb(12, 12, 12);
+  border: 0.5px solid rgba(255, 255, 255, 0.2);
+  padding: 1em;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center; 
+  gap: 1em;
+}
+
+.sv-mail-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25em;
+}
+
+.sv-mail-status {
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  text-transform: capitalize;
+  display: inline-block;
+  width: auto;
+}
+
+.sv-scheduled {
+  background-color: #331a00;
+  color: #ff9933;
+}
+
+.sv-sent {
+  background-color: #004d00;
+  color: #4caf50;
+}
+
+
+
+.sv-loading,
+.sv-empty {
+  text-align: center;
+  margin-top: 50px;
+  font-size: 1rem;
+  color: #bbb;
+}

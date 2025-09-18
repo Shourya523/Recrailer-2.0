@@ -1,10 +1,11 @@
 import { User } from "../models/user.models.js";
+import { email } from "../models/emails.models.js";
 import bcrypt from 'bcrypt';
 import express from 'express'
 
 
 
-export const signup=async (req, res) => {
+export const signup = async (req, res) => {
   try {
     const { email, loginPassword, appPassword } = req.body;
 
@@ -31,7 +32,7 @@ export const signup=async (req, res) => {
   }
 }
 
-export const logIn=async (req, res) => {
+export const logIn = async (req, res) => {
   try {
     const { email, loginPassword } = req.body;
     const userExists = await User.findOne({ email });
@@ -50,5 +51,17 @@ export const logIn=async (req, res) => {
     })
   } catch (error) {
     console.log("Error: ", error);
+  }
+}
+export const mails = async (req, res) => {
+  try {
+    const mails = await email.find({ userId: req.user._id })
+      .select("to subject status -_id")
+      .sort({ createdAt: -1 });
+
+    res.json(mails);
+
+  } catch (err) {
+    res.status(500).json({ error: err.message });
   }
 }

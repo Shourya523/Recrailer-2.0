@@ -1,79 +1,119 @@
-/* Page Layout */
 .cn-page-layout {
   display: flex;
   height: 100vh;
-  background: #000;
+  background: black;
+  backdrop-filter: opacity(0%);
   color: #fff;
   font-family: "Geist", sans-serif;
 }
 
-/* Sidebar */
 .cn-sidebar {
   width: 250px;
-  background: #0f0f0f;
+  background: black;
   padding: 20px;
   display: flex;
   flex-direction: column;
+  border-right: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .cn-new-campaign {
-  background: #ff9933;
-  color: white;
+  background: linear-gradient(135deg, #ff8000, #ff7b00);
+  color: black;
   border: none;
-  padding: 10px 14px;
+  padding: 1em 1em 1em 2em;
   border-radius: 8px;
   font-weight: bold;
   margin-bottom: 20px;
   cursor: pointer;
   display: flex;
-  gap: 6px;
+  gap: 1.5em;
   align-items: center;
+  margin-top: .75em;
 }
 
 .cn-sidebar-title {
   font-size: 1.4rem;
   font-weight: bold;
   margin-bottom: 30px;
+  display: none;
 }
 
 .cn-sidebar-menu {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  margin-top: 1.35em;
+  gap: 1.5em;
 }
 
 .cn-menu-item {
   display: flex;
   align-items: center;
-  gap: .75em;
-  margin-bottom: 1em ;
+  padding: .5em 0em .5em 1em;
+  width: 95%;
+  height: 2em;
+  gap: 10px;
   color: #bbb;
   font-size: 0.95rem;
   cursor: pointer;
+  border-radius: 10px;
 }
 
 .cn-menu-item:hover,
 .cn-active {
   color: #fff;
+  background-color: rgba(255, 255, 255, 0.125);
 }
 
-/* Main Panel */
 .cn-main {
   flex: 1;
-  padding: 30px;
+  padding: .25em 0em 0em 0em;
   overflow-y: auto;
 }
 
-.cn-compose-heading {
-  font-size: 1.6rem;
-  margin-bottom: 20px;
+.cn-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0em 2em 1.5em 1.5em;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-/* Form */
+.Recrailer-cn {
+  text-align: left;
+  font-size: 2em;
+  font-weight: bold;
+}
+
+.cn-icon-wrapper {
+  display: flex;
+  gap: 2em;
+}
+
+.cn-icon {
+  color: #aaa;
+  cursor: pointer;
+}
+
+.cn-icon:hover {
+  color: #ff9933;
+}
+
+.cn-icon-orange {
+  color: #ff9933;
+}
+
+.cn-compose-heading {
+  font-size: 2rem;
+  margin-bottom: 1em;
+  margin-left: .75em;
+  /* border-bottom: 1px solid rgba(255, 255, 255, 0.2); */
+}
+
 .cn-compose-form {
   display: flex;
   flex-direction: column;
   gap: 15px;
+  padding: 1.5em;
 }
 
 .cn-input-card {
@@ -119,6 +159,7 @@
   resize: none;
   outline: none;
   font-size: 0.95rem;
+  font-family: 'Geist';
 }
 
 .cn-error-text {
@@ -126,14 +167,90 @@
   font-size: 0.8rem;
   margin-top: 4px;
 }
+.cn-input-card label input[type="checkbox"] {
+  appearance: none;
+  width: 40px;
+  height: 20px;
+  background: #ccc;
+  border-radius: 20px;
+  position: relative;
+  cursor: pointer;
+  outline: none;
+  transition: background 0.3s ease;
+  margin-right: 8px;
+}
+
+.cn-input-card label input[type="checkbox"]::before {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 16px;
+  height: 16px;
+  background: white;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+
+.cn-input-card label input[type="checkbox"]:checked {
+  background: #4caf50;
+}
+
+.cn-input-card label input[type="checkbox"]:checked::before {
+  transform: translateX(20px);
+}
+
+.cn-input-card label {
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  cursor: pointer;
+}
 
 .cn-submit-btn {
-  background: #ff9933;
+  background: linear-gradient(135deg, #ff8000, #ff7b00);
+  color: black;
   border: none;
   padding: 10px 16px;
   border-radius: 8px;
-  color: white;
   font-weight: bold;
   cursor: pointer;
   align-self: flex-start;
+}
+.cn-input-heading,
+.cn-input-wrapper input,
+.cn-message-box,
+.cn-input-card label {
+  font-family: "Geist", sans-serif;
+}
+
+.cn-input-wrapper {
+  display: flex;
+  align-items: center;
+  background: #1e1e1e;
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 8px 12px;
+}
+
+.cn-input-icon input[type="datetime-local"] {
+  color: #fff;
+  margin-right: 8px;
+  font-size: 16px;
+}
+
+.cn-input-wrapper input[type="datetime-local"] {
+  flex: 1;
+  border: none;
+  background: transparent;
+  color: #fff;
+  font-family: "Geist", sans-serif;
+  font-size: 14px;
+  outline: none;
+  cursor: pointer;
+}
+
+.cn-input-wrapper input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+  cursor: pointer;
 }

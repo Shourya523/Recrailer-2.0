@@ -29,7 +29,7 @@ function LogIn() {
                 localStorage.setItem("email", result.email);
 
                 // ✅ Redirect to compose
-                navigate("/compose");
+                navigate("/dashboard");
             } else {
                 alert(result.message || "Invalid credentials, try again.");
             }

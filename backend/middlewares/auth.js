@@ -9,8 +9,6 @@ export const ensureAuthenticated = (req, res, next) => {
         return res.status(403).json({ message: "Unauthorized, JWT is required" });
     }
 
-    // const token = auth.split(" ")[1];
-
     try {
         const decoded = jwt.verify(auth, process.env.ACCESS_TOKEN_SECRET);
         req.user = decoded;

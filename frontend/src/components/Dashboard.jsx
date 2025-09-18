@@ -67,14 +67,8 @@ export default function Dashboard() {
           >
             <FileText size={16} /> Campaigns <span className="dn-badge">12</span>
           </a>
-          <a
-            className="dn-menu-item"
-            onClick={() => navigate("/scheduled")}
-          >
-            <Calendar size={16} /> Scheduled <span className="dn-badge">8</span>
-          </a>
-          <a className="dn-menu-item" onClick={() => navigate("/sent")}>
-            <Send size={16} /> Sent <span className="dn-badge">156</span>
+          <a className="sv-menu-item" onClick={() => navigate("/scheduled")}>
+            <Send size={16} /> Sent <span className="sv-badge">156</span>
           </a>
           <a className="dn-menu-item" onClick={() => navigate("/contacts")}>
             <Users size={16} /> Contacts <span className="dn-badge">2340</span>
@@ -89,8 +83,11 @@ export default function Dashboard() {
       <main className="dn-main">
         {/* Topbar */}
         <div className="dn-topbar">
-          <Bell size={18} className="dn-icon" />
-          <User size={18} className="dn-icon" />
+          <div className="Recrailer-dn">Recrailer</div>
+          <div className="dn-icon-wrapper">
+            <Bell size={18} className="dn-icon" />
+            <User size={18} className="dn-icon" />
+          </div>
         </div>
 
         {/* Stats */}

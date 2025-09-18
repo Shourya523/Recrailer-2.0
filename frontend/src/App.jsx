@@ -4,8 +4,9 @@ import { Route, Routes } from 'react-router-dom'
 import LogIn from './components/LogIn.jsx'
 import MainPage from './components/MainPage.jsx'
 import SignUp from './components/SignUp.jsx' 
-import Dashboard from './components/Dashboard.jsx'   // <-- import your new file
+import Dashboard from './components/Dashboard.jsx'
 import ComposePage from './components/ComposePage.jsx'
+import ScheduleView from './components/ScheduleView.jsx'
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
         <Route path="/signup" element={<SignUp />} /> 
         <Route path="/dashboard" element={<Dashboard />} />  
         <Route path="/compose" element={<ComposePage/>} />  
+        <Route path="/scheduled" element={<ScheduleView/>} />  
       </Routes>
     </>
   )
