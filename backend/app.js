@@ -1,5 +1,6 @@
 import express from 'express'
 import { registerRouter } from './routes/register.route.js'
+import router from './routes/run-cron.route.js';
 import cors from 'cors'
 import "./Cron/scheduler.js";
 import dotenv from 'dotenv';
@@ -14,4 +15,5 @@ app.use(
   })
 );
 app.use('/api',registerRouter);
+app.use('/api',router);
 
