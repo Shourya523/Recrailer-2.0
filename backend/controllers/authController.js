@@ -15,9 +15,15 @@ export const signup = async (req, res) => {
 
     const hashedLoginPassword = await bcrypt.hash(loginPassword, 10);
 
-    const encryptedAppPassword = appPassword
-      ? CryptoJS.AES.encrypt(appPassword, process.env.APP_PASS_SECRET).toString()
-      : undefined;
+    let encryptedAppPassword;
+    if (appPassword) {
+      const secret = process.env.APP_PASS_SECRET;
+      if (!secret) {
+        return res.status(500).json({ error: 'Encryption secret not set' });
+      }
+      const key = CryptoJS.enc.Utf8.parse(secret);
+      encryptedAppPassword = CryptoJS.AES.encrypt(appPassword, key).toString();
+    }
 
     const newUser = new User({
       email,
@@ -56,6 +62,7 @@ export const logIn = async (req, res) => {
     console.log("Error: ", error);
   }
 }
+
 export const mails = async (req, res) => {
   try {
     const mails = await email.find({ userId: req.user._id })

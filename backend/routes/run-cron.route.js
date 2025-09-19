@@ -22,7 +22,6 @@ router.get("/run-cron", async (req, res) => {
 
         for (const mail of mails) {
             try {
-                // user is already populated from populate()
                 const user = mail.userId;
 
                 if (!user) {
@@ -30,8 +29,6 @@ router.get("/run-cron", async (req, res) => {
                     await mail.save();
                     continue;
                 }
-
-                // send mail
                 await sendMailFromUser(
                     user.email,
                     mail.to,
