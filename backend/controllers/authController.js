@@ -1,9 +1,8 @@
 import { User } from "../models/user.models.js";
 import { email } from "../models/emails.models.js";
 import bcrypt from 'bcrypt';
-import express from 'express'
-
-
+import express from 'express';
+import CryptoJS from 'crypto-js';
 
 export const signup = async (req, res) => {
   try {
@@ -16,10 +15,14 @@ export const signup = async (req, res) => {
 
     const hashedLoginPassword = await bcrypt.hash(loginPassword, 10);
 
+    const encryptedAppPassword = appPassword
+      ? CryptoJS.AES.encrypt(appPassword, process.env.APP_PASS_SECRET).toString()
+      : undefined;
+
     const newUser = new User({
       email,
       loginPassword: hashedLoginPassword,
-      appPassword,
+      appPassword: encryptedAppPassword,
     });
 
     await newUser.save();
