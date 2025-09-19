@@ -1,10 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   Mail,
-  Users,
   Calendar,
-  BarChart2,
   LayoutDashboard,
   Send,
   FileText,
@@ -16,33 +14,39 @@ import {
 import "./DashboardNew.css";
 
 export default function Dashboard() {
-  const [message, setMessage] = useState("");
+  const [mails, setMails] = useState([]);
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  const fetchMessage = async () => {
-    try {
-      const token = localStorage.getItem("token");
-      const res = await fetch("https://recrailer-2-0.onrender.com/api/", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: token,
-        },
-      });
+  useEffect(() => {
+    const fetchMails = async () => {
+      try {
+        const token = localStorage.getItem("token");
+        const res = await fetch("https://recrailer-2-0.onrender.com/api/mails", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: token,
+          },
+        });
 
-      if (!res.ok) {
-        throw new Error("Unauthorized or server error");
+        if (!res.ok) throw new Error("Unauthorized or server error");
+
+        const data = await res.json();
+        setMails(data);
+        setError("");
+      } catch (err) {
+        setError(err.message);
+        setMails([]);
       }
+    };
 
-      const data = await res.json();
-      setMessage(data.message);
-      setError("");
-    } catch (err) {
-      setError(err.message);
-      setMessage("");
-    }
-  };
+    fetchMails();
+  }, []);
+
+  const totalSent = mails.filter(m => m.status === "sent").length;
+  const scheduled = mails.filter(m => m.status === "scheduled");
+  const recentScheduled = scheduled.slice(0, 3);
 
   return (
     <div className="dn-dashboard">
@@ -64,19 +68,17 @@ export default function Dashboard() {
             className="dn-menu-item"
             onClick={() => navigate("/compose")}
           >
-            <FileText size={16} /> Campaigns <span className="dn-badge">12</span>
+            <FileText size={16} /> Campaigns
           </a>
-          <a className="sv-menu-item" onClick={() => navigate("/scheduled")}>
-            <Send size={16} /> Sent <span className="sv-badge">156</span>
-          </a>
-          <a className="dn-menu-item" onClick={() => navigate("/contacts")}>
-            <Users size={16} /> Contacts <span className="dn-badge">2340</span>
+          <a className="dn-menu-item" onClick={() => navigate("/scheduled")}>
+            <Send size={16} /> Sent
           </a>
           <a className="dn-menu-item" onClick={() => navigate("/settings")}>
             <Settings size={16} /> Settings
           </a>
         </nav>
       </aside>
+
       <main className="dn-main">
         <div className="dn-topbar">
           <div className="Recrailer-dn">Recrailer</div>
@@ -85,23 +87,14 @@ export default function Dashboard() {
             <User size={18} className="dn-icon" />
           </div>
         </div>
+
         <div className="dn-stats-grid">
           <div className="dn-stat-card">
             <div className="dn-stat-header">
               <span>Total Emails Sent</span>
               <Mail size={16} className="dn-icon-orange" />
             </div>
-            <h2>12,428</h2>
-            <span className="dn-positive">+12.5% from last month</span>
-          </div>
-
-          <div className="dn-stat-card">
-            <div className="dn-stat-header">
-              <span>Active Subscribers</span>
-              <Users size={16} className="dn-icon-orange" />
-            </div>
-            <h2>2,340</h2>
-            <span className="dn-positive">+8.2% from last month</span>
+            <h2>{totalSent}</h2>
           </div>
 
           <div className="dn-stat-card">
@@ -109,35 +102,26 @@ export default function Dashboard() {
               <span>Scheduled Campaigns</span>
               <Calendar size={16} className="dn-icon-orange" />
             </div>
-            <h2>8</h2>
-            <span className="dn-positive">+2 from last month</span>
-          </div>
-
-          <div className="dn-stat-card">
-            <div className="dn-stat-header">
-              <span>Open Rate</span>
-              <BarChart2 size={16} className="dn-icon-orange" />
-            </div>
-            <h2>24.8%</h2>
-            <span className="dn-positive">+3.1% from last month</span>
+            <h2>{scheduled.length}</h2>
           </div>
         </div>
+
         <div className="dn-upcoming">
           <h3>Upcoming Campaigns</h3>
-          <div className="dn-campaign-card">
-            <p className="dn-campaign-title">Weekly Newsletter - Product Updates</p>
-            <p className="dn-campaign-to">To: newsletter@subscribers.com</p>
-            <p className="dn-campaign-time">Today at 2:00 PM</p>
-            <span className="dn-status-scheduled">scheduled</span>
-          </div>
-
-          <div className="dn-campaign-card">
-            <p className="dn-campaign-title">Welcome Series - Day 3</p>
-            <p className="dn-campaign-to">To: new@users.com</p>
-            <p className="dn-campaign-time">Tomorrow at 10:00 AM</p>
-            <span className="dn-status-scheduled">scheduled</span>
-          </div>
+          {recentScheduled.length > 0 ? (
+            recentScheduled.map((mail, idx) => (
+              <div className="dn-campaign-card" key={idx}>
+                <p className="dn-campaign-title">{mail.subject}</p>
+                <p className="dn-campaign-to">To: {mail.to}</p>
+                <span className="dn-status-scheduled">{mail.status}</span>
+              </div>
+            ))
+          ) : (
+            <p>No upcoming campaigns scheduled.</p>
+          )}
         </div>
+
+        {error && <div className="dn-error">{error}</div>}
       </main>
     </div>
   );
