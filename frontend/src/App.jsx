@@ -1,12 +1,12 @@
 import { useState } from 'react'
 import './index.css'
 import { Route, Routes } from 'react-router-dom'
-import LogIn from './components/LogIn.jsx'
-import MainPage from './components/MainPage.jsx'
-import SignUp from './components/SignUp.jsx' 
-import Dashboard from './components/Dashboard.jsx'
-import ComposePage from './components/ComposePage.jsx'
-import ScheduleView from './components/ScheduleView.jsx'
+import LogIn from './Pages/LogIn.jsx'
+import MainPage from './Pages/MainPage.jsx'
+import SignUp from './Pages/SignUp.jsx' 
+import Dashboard from './Pages/Dashboard.jsx'
+import ComposePage from './Pages/ComposePage.jsx'
+import ScheduleView from './Pages/ScheduleView.jsx'
 
 function App() {
   return (

@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom"; // ✅ add useNavigate
+import { Link, useNavigate } from "react-router-dom";
 import "./LogIn.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faLock } from "@fortawesome/free-solid-svg-icons";
@@ -11,7 +11,7 @@ function LogIn() {
         formState: { errors, isSubmitting },
     } = useForm();
 
-    const navigate = useNavigate(); // ✅ navigation hook
+    const navigate = useNavigate();
 
     const onSubmit = async (data) => {
         try {
@@ -24,11 +24,8 @@ function LogIn() {
             const result = await response.json();
 
             if (response.ok) {
-                // ✅ Save tokens or user info if needed
                 localStorage.setItem("token", result.accessToken);
                 localStorage.setItem("email", result.email);
-
-                // ✅ Redirect to compose
                 navigate("/dashboard");
             } else {
                 alert(result.message || "Invalid credentials, try again.");
@@ -41,7 +38,6 @@ function LogIn() {
 
     return (
         <div className="page-layout">
-            {/* Dashboard panel on the LEFT */}
             <div className="left-panel">
                 <div className="dashboard-info">
                     <h2 className="dashboard-title">Welcome Back</h2>
@@ -78,15 +74,12 @@ function LogIn() {
                     </div>
                 </div>
             </div>
-
-            {/* LogIn form on the RIGHT */}
             <div className="right-panel">
                 <p className="right-panel-heading">Log In to Recrailer</p>
                 <div className="username-box">
                     <p className="username-box-text">Sign In</p>
 
                     <form onSubmit={handleSubmit(onSubmit)}>
-                        {/* Email */}
                         <div className="input-heading">Email</div>
                         <div className="input-wrapper">
                             <FontAwesomeIcon
@@ -104,8 +97,6 @@ function LogIn() {
                             />
                         </div>
                         {errors.email && <span>{errors.email.message}</span>}
-
-                        {/* Password */}
                         <div className="input-heading">Password</div>
                         <div className="input-wrapper">
                             <FontAwesomeIcon
@@ -123,14 +114,10 @@ function LogIn() {
                             />
                         </div>
                         {errors.loginPassword && <span>{errors.loginPassword.message}</span>}
-
-                        {/* Submit */}
                         <button type="submit" className="submit-btn">
                             {isSubmitting ? "Signing In..." : "Sign In"}
                         </button>
                     </form>
-
-                    {/* ✅ Switch to Sign Up */}
                     <p className="switch-auth">
                         Don’t have an account?{" "}
                         <Link to="/signup" className="switch-link">

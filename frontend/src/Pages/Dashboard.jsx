@@ -46,7 +46,6 @@ export default function Dashboard() {
 
   return (
     <div className="dn-dashboard">
-      {/* Sidebar */}
       <aside className="dn-sidebar">
         <button
           className="dn-new-campaign"
@@ -78,10 +77,7 @@ export default function Dashboard() {
           </a>
         </nav>
       </aside>
-
-      {/* Main */}
       <main className="dn-main">
-        {/* Topbar */}
         <div className="dn-topbar">
           <div className="Recrailer-dn">Recrailer</div>
           <div className="dn-icon-wrapper">
@@ -89,8 +85,6 @@ export default function Dashboard() {
             <User size={18} className="dn-icon" />
           </div>
         </div>
-
-        {/* Stats */}
         <div className="dn-stats-grid">
           <div className="dn-stat-card">
             <div className="dn-stat-header">
@@ -128,8 +122,6 @@ export default function Dashboard() {
             <span className="dn-positive">+3.1% from last month</span>
           </div>
         </div>
-
-        {/* Upcoming */}
         <div className="dn-upcoming">
           <h3>Upcoming Campaigns</h3>
           <div className="dn-campaign-card">

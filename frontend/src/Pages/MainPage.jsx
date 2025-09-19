@@ -7,10 +7,10 @@ import { useNavigate } from 'react-router-dom'
 function MainPage() {
   const navigate = useNavigate();
   const handleLoginClick = () => {
-    navigate('/login'); // redirect to /login
+    navigate('/login');
   }
   const handleSignUpClick = () => {
-    navigate('/signup'); // redirect to /login
+    navigate('/signup'); 
   }
 
 

@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom"; // ✅ useNavigate added
+import { Link, useNavigate } from "react-router-dom"; 
 import "./SignUp.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faLock, faKey } from "@fortawesome/free-solid-svg-icons";
@@ -11,7 +11,7 @@ function SignUp() {
         formState: { errors, isSubmitting },
     } = useForm();
 
-    const navigate = useNavigate(); // ✅ for redirect
+    const navigate = useNavigate();
 
     const onSubmit = async (data) => {
         try {
@@ -22,7 +22,6 @@ function SignUp() {
             });
 
             if (response.ok) {
-                // ✅ redirect to login if signup is successful
                 navigate("/login");
             } else {
                 const errorData = await response.json();
@@ -42,7 +41,6 @@ function SignUp() {
                     <p className="username-box-text">Sign Up</p>
 
                     <form onSubmit={handleSubmit(onSubmit)}>
-                        {/* Email */}
                         <div className="input-heading">Email</div>
                         <div className="input-wrapper">
                             <FontAwesomeIcon
@@ -66,8 +64,6 @@ function SignUp() {
                             Use your registered <strong>email address.</strong>
                         </p>
                         {errors.email && <span>{errors.email.message}</span>}
-
-                        {/* Login Password */}
                         <div className="input-heading">Recrailer Password</div>
                         <div className="input-wrapper">
                             <FontAwesomeIcon
@@ -88,8 +84,6 @@ function SignUp() {
                             Your <strong>Recrailer</strong> account login <strong>password.</strong>
                         </p>
                         {errors.loginPassword && <span>{errors.loginPassword.message}</span>}
-
-                        {/* App Password */}
                         <div className="input-heading">
                             <a href="https://share.google/xD8H8bZduiUvsIZYE">App Password</a>
                         </div>
@@ -110,18 +104,14 @@ function SignUp() {
                             />
                         </div>
                         <p className="info-text">
-                            Auto-generated password for third-party apps.{" "}
+                             <a href="https://share.google/xD8H8bZduiUvsIZYE">Click Here For App Password</a>{" "}
                             <strong>2FA Should be on.</strong>
                         </p>
                         {errors.appPassword && <span>{errors.appPassword.message}</span>}
-
-                        {/* Submit */}
                         <button type="submit" className="submit-btn">
                             {isSubmitting ? "Submitting..." : "Submit"}
                         </button>
                     </form>
-
-                    {/* 🔗 Auth Switch */}
                     <p className="switch-auth">
                         Already a user?{" "}
                         <Link to="/login" className="switch-link">
@@ -130,8 +120,6 @@ function SignUp() {
                     </p>
                 </div>
             </div>
-
-            {/* Right Panel */}
             <div className="right-panel">
                 <div className="dashboard-info">
                     <h2 className="dashboard-title">Dashboard</h2>
