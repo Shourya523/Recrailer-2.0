@@ -117,7 +117,7 @@ export default function Dashboard() {
               </div>
             ))
           ) : (
-            <p>No upcoming campaigns scheduled.</p>
+            <p className="No-campaigns">No upcoming campaigns scheduled.</p>
           )}
         </div>
 
