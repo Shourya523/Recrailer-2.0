@@ -1,7 +1,6 @@
 // routes/cron.js
 import express from "express";
-import { email } from "../models/email.js";  // your email schema
-import { User } from "../models/user.js";    // your user schema
+import { email } from "../models/emails.models.js"; 
 import { sendMailFromUser } from "../utils/mailer.js"; // your mailer function
 
 const router = express.Router();
