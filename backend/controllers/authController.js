@@ -1,8 +1,9 @@
 import { User } from "../models/user.models.js";
 import { email } from "../models/emails.models.js";
 import bcrypt from 'bcrypt';
-import express from 'express';
-import CryptoJS from 'crypto-js';
+import express from 'express'
+
+
 
 export const signup = async (req, res) => {
   try {
@@ -15,20 +16,10 @@ export const signup = async (req, res) => {
 
     const hashedLoginPassword = await bcrypt.hash(loginPassword, 10);
 
-    let encryptedAppPassword;
-    if (appPassword) {
-      const secret = process.env.APP_PASS_SECRET;
-      if (!secret) {
-        return res.status(500).json({ error: 'Encryption secret not set' });
-      }
-      const key = CryptoJS.enc.Utf8.parse(secret);
-      encryptedAppPassword = CryptoJS.AES.encrypt(appPassword, key).toString();
-    }
-
     const newUser = new User({
       email,
       loginPassword: hashedLoginPassword,
-      appPassword: encryptedAppPassword,
+      appPassword,
     });
 
     await newUser.save();
@@ -62,7 +53,6 @@ export const logIn = async (req, res) => {
     console.log("Error: ", error);
   }
 }
-
 export const mails = async (req, res) => {
   try {
     const mails = await email.find({ userId: req.user._id })
