@@ -86,9 +86,10 @@ export default function ComposePage() {
               <FontAwesomeIcon icon={faEnvelope} className="cn-input-icon" />
               <input
                 {...register("to", { required: "Recipient is required" })}
-                placeholder="Recipient Email"
-                type="email"
+                placeholder="Recipient Emails (comma or space separated)"
+                type="text"
               />
+
             </div>
             {errors.to && <span className="cn-error-text">{errors.to.message}</span>}
           </div>
