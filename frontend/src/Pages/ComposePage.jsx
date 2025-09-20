@@ -89,7 +89,6 @@ export default function ComposePage() {
                 placeholder="Recipient Emails (comma or space separated)"
                 type="text"
               />
-
             </div>
             {errors.to && <span className="cn-error-text">{errors.to.message}</span>}
           </div>
