@@ -1,7 +1,7 @@
 // routes/cron.js
 import express from "express";
 import { email } from "../models/emails.models.js";
-import { sendMailFromUser } from "../utils/mailer.js"; // your mailer function
+import { sendMailFromUser } from "../utils/mailer.js"; 
 
 const router = express.Router();
 
@@ -43,7 +43,7 @@ router.get("/run-cron", async (req, res) => {
 
                 console.log(`✅ Mail sent: ${user.email} → ${mail.to}`);
             } catch (err) {
-                console.error("❌ Error sending mail:", err.message);
+                console.error("Error sending mail:", err.message);
                 mail.status = "failed";
                 await mail.save();
             }
