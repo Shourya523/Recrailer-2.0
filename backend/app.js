@@ -6,15 +6,15 @@ import "./Cron/scheduler.js";
 import dotenv from 'dotenv';
 dotenv.config();
 
-export const app=express();
+export const app = express();
 app.use(express.json());
-app.use(express.urlencoded({extended:true}));
+app.use(express.urlencoded({ extended: true }));
 app.use(
   cors({
-    origin: process.env.CORS,
+    origin: "*",
   })
 );
-app.use('/api',registerRouter);
-app.use('/api',router);
+app.use('/api', registerRouter);
+app.use('/api', router);
 //
 

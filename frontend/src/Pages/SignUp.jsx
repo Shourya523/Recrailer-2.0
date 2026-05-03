@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom"; 
+import { Link, useNavigate } from "react-router-dom";
 import "./SignUp.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faLock, faKey } from "@fortawesome/free-solid-svg-icons";
@@ -15,7 +15,7 @@ function SignUp() {
 
     const onSubmit = async (data) => {
         try {
-            const response = await fetch("https://recrailer-2-0.onrender.com/api/sign-up", {
+            const response = await fetch("http://localhost:8000/api/sign-up", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(data),
@@ -104,7 +104,7 @@ function SignUp() {
                             />
                         </div>
                         <p className="info-text">
-                             <a href="https://share.google/xD8H8bZduiUvsIZYE">Click Here For App Password</a>{" "}
+                            <a href="https://share.google/xD8H8bZduiUvsIZYE">Click Here For App Password</a>{" "}
                             <strong>2FA Should be on.</strong>
                         </p>
                         {errors.appPassword && <span>{errors.appPassword.message}</span>}

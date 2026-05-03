@@ -22,7 +22,7 @@ export default function Dashboard() {
     const fetchMails = async () => {
       try {
         const token = localStorage.getItem("token");
-        const res = await fetch("https://recrailer-2-0.onrender.com/api/scheduled", {
+        const res = await fetch("http://localhost:8000/api/scheduled", {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
